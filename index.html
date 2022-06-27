@@ -1,0 +1,26 @@
+<html>
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+
+<body>
+
+    <main class="container">
+      <h1>Hello, world!</h1>
+    </main>
+ 
+    <py-script> 
+    from pyodide.http import pyfetch
+    import asyncio
+    symbol1 ="<"
+    symbol2="\""
+    symbol3="\">"
+    response = await pyfetch(url="https://dog.ceo/api/breeds/image/random", method="GET")
+    test = await response.json()
+    message1 = """<p>Hier kommt ein Bild:</p> """
+    print(message1)
+    urltest=test['message']
+    print(symbol1+"img src="+symbol2+urltest+symbol3)
+    </py-script>
+  </body> 
+</html>
